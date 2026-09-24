@@ -1,57 +1,61 @@
-# LegalEase
+# Phase 1 — Brainstorming and Ideation
 
-LegalEase is an AI-assisted legal document drafting prototype with a FastAPI backend and Streamlit frontend.
+## 1.1 Problem Statement
 
-## Setup
+Creating a first draft of a legal document can require repetitive collection of party details, dates, clauses, terms, formatting, and document structure. Users who are unfamiliar with legal-document structure may also find it difficult to convert plain-language requirements into a consistent draft.
 
-Open the `LegalEase` folder in VS Code, then run these commands in Terminal 1:
+## 1.2 Proposed Solution
 
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-Copy-Item .env.example .env
-```
+LegalEase is an AI-assisted drafting platform that accepts structured user inputs and uses Google Gemini to generate a structured legal-document draft. The generated content can be previewed and exported as TXT, DOCX, or PDF.
 
-Edit `.env` and provide your Gemini API key:
+## 1.3 Target Users
 
-```dotenv
-GEMINI_API_KEY=YOUR_GEMINI_API_KEY
-GEMINI_MODEL=gemini-3.8-flash
-DEMO_MODE=false
-BACKEND_URL=http://127.0.0.1:8000
-```
+- Students learning legal-tech concepts
+- Individuals preparing an initial document draft
+- Small businesses preparing routine document drafts
+- Developers demonstrating generative-AI integration
+- Legal professionals who want a first-draft assistant
 
-Keep `.env` private. The `GEMINI_API_KEY` value is loaded from the environment by the backend.
+## 1.4 Core Features
 
-## Run the backend
+1. Document type selection
+2. Parties and participant details
+3. Effective date
+4. Terms and conditions
+5. Additional instructions
+6. AI-powered generation
+7. Generated-document preview
+8. Optional logo upload
+9. TXT export
+10. DOCX export
+11. PDF export
+12. API-based architecture
 
-In Terminal 1, with the virtual environment activated:
+## 1.5 Innovation
 
-```powershell
-uvicorn backend.main:app --reload --port 8000
-```
+The project combines:
+- Generative AI
+- Legal-document structure
+- FastAPI services
+- Streamlit UI
+- Multi-format document generation
 
-Open the API at [http://127.0.0.1:8000](http://127.0.0.1:8000). Interactive API documentation is available at [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs).
+## 1.6 Goals
 
-## Run the frontend
+- Reduce repetitive drafting work
+- Produce consistently structured first drafts
+- Make AI-assisted drafting accessible through a simple UI
+- Demonstrate an end-to-end GenAI application
+- Provide downloadable document outputs
 
-Open Terminal 2:
+## 1.7 Constraints
 
-```powershell
-.\.venv\Scripts\Activate.ps1
-streamlit run frontend/app.py
-```
+- AI output can contain mistakes
+- Legal requirements differ by jurisdiction and document type
+- API availability and model behavior can change
+- Generated drafts require human review
+- Sensitive personal/legal information should be handled carefully
 
-Open the Streamlit URL shown in the terminal, normally [http://localhost:8501](http://localhost:8501).
+## 1.8 Expected Outcome
 
-## Demo mode
-
-Set this value in `.env` before restarting the backend:
-
-```dotenv
-DEMO_MODE=true
-```
-
-The current application code does not yet read `DEMO_MODE`; enabling this variable alone does not switch generation to a demo provider. Gemini generation therefore still requires the configured API key unless demo-mode support is added to the backend.
+A working web application where a user enters document information, requests generation, reviews the draft, and exports it in a selected format.
